@@ -25,6 +25,9 @@ public class Person {
     @Column(name = "person_role")
     private String personRole;
 
+    @Column(name = "password")
+    private String password;
+
     @Column(name = "time_registration_person")
     private Date timeRegistrationPerson;
 
@@ -83,6 +86,14 @@ public class Person {
 
     public void setPersonRole(String personRole) {
         this.personRole = personRole;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Date getTimeRegistrationPerson() {
