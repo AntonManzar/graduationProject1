@@ -42,7 +42,7 @@
     aside
 </aside>
 <footer class="margin">
-    footer
+    <a href="/person">список всех пользователей</a>
 </footer>
 
 <style>
@@ -192,7 +192,7 @@
     }
 
     #Clouds {
-        position: absolute;
+        position: static;
         top: 0;
         right: 0;
         bottom: 0;
@@ -201,7 +201,7 @@
         height: 30%;
         overflow: hidden;
         -webkit-animation: FadeIn 3s ease-out;
-        animation: FadeIn 3s ease-out;
+        animation: FadeIn 1s ease-out;
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
@@ -230,7 +230,7 @@
         position: absolute;
         width: 100%;
         background-repeat: no-repeat;
-        background-size: auto 100%;
+        background-size: auto 80%;
         height: 70px;
         -webkit-animation-duration: 120s;
         animation-duration: 120s;
@@ -242,13 +242,13 @@
         animation-timing-function: linear;
         -webkit-animation-name: Float, FadeFloat;
         animation-name: Float, FadeFloat;
-        z-index: 1
+        z-index: -1
     }
 
     .Cloud.Foreground {
         height: 10%;
         min-height: 20px;
-        z-index: 3
+        z-index: -3
     }
 
     .Cloud.Background {

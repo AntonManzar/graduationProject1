@@ -2,50 +2,35 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Список игрушек</title>
-    <link rel="stylesheet" href="templates/css/cloud.css">
+    <title>Страница авторизации</title>
+    <link media="all" rel="stylesheet" th:href="@{/css/cloud.css}" type="text/css"/>
 </head>
-<body>
+<body style="text-align: center">
 
 <header class="margin">
-    <h1>Список игрушек:</h1>
+    <h1>Авторизация</h1>
 </header>
-<nav class="margin">
-    <h2>
-        <div class="a1"><a class="a1" href="/">Главная</a></div>
-        <div class="a2"><a class="a2" href="/product">Игрушки</a></div>
-        <div class="a3"><a class="a3" href="/">Колонка №3</a></div>
-        <div class="a4"><a class="a4" href="/">Колонка №4</a></div>
-        <div class="a5"><a class="a5" href="/">Колонка №5</a></div>
-        <div class="a6"><a class="a6" href="/">Колонка №6</a></div>
-        <div class="a7"><a class="a7" href="/">Колонка №7</a></div>
-    </h2>
-</nav>
-<main class="margin">
-    <table>
-        <caption>Игрушки:</caption>
-        <thead>
-        <tr>
-            <th>Наименование</th>
-            <th>Цена [руб/шт]</th>
-            <th>Колличество [шт]</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="product : ${listProduct}">
-            <th th:text="${product.getProductName()}"></th>
-            <th th:text="${product.getProductPrice()}"></th>
-            <th th:text="${product.getProductAmount()}"></th>
-        </tr>
-        </tbody>
-    </table>
+<main>
+    <form name="f" method="post" action="/process_login">
+        <label for="email">Введите email: </label>
+        <br>
+        <input type="text" name="username" id="email" class="input">
+        <br>
+        <label for="password">Введите пароль: </label>
+        <br>
+        <input type="password" name="password" id="password" class="input">
+        <br>
+        <input type="submit" value="Войти" class="inSub">
+
+        <div th:if="${param.error}" style="color: red">Неправильный email или пароль!</div>
+
+        <div style="margin-top: 10px ">
+            <a class="registration" href="/auth/registration">Регистрация</a>
+        </div>
+    </form>
+
 </main>
-<aside class="margin">
-    aside
-</aside>
-<footer class="margin">
-    <a href="/person">список всех пользователей</a>
-</footer>
+
 
 <style>
     body {
@@ -73,6 +58,7 @@
         text-align: center;
         margin: 0.5%;
     }
+
     nav h2 div a {
         text-align: center;
     }
@@ -120,10 +106,22 @@
     }
 
     main {
-        width: 60%;
-        min-height: 500px;
-        float: right;
-        background-color: rgba(0, 255, 0, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: auto;
+        font-size: x-large;
+        font-family: "Cambria Math";
+        color: #036b9d;
+    }
+
+    form {
+        z-index: 100;
+        text-align: center;
+        padding: 50px;
+        background-color: rgba(196, 227, 196, 0.26);
+        background-size: 200px;
+        border-radius: 25%;
     }
 
     caption {
@@ -167,8 +165,26 @@
     .margin {
         margin: 2%;
     }
-</style>
 
+    .inSub {
+        color: #0a39b2;
+        border-color: #07a4a4;
+        background-color: #8df3e0;
+    }
+
+    .input {
+        border-color: #FA9026;
+        border-radius: 5px;
+        background-color: #ecd8c5;
+    }
+
+    .registration {
+        border-radius: 5px;
+        background: rgba(201, 90, 201, 0.66);
+        color: #74039b;
+        border: 3px inset #d62297;
+    }
+</style>
 
 <!--================================================================================================-->
 
@@ -194,16 +210,16 @@
     }
 
     #Clouds {
-        position: static;
+        position: absolute;
         top: 0;
         right: 0;
         bottom: 0;
         left: 0;
         margin: auto;
-        height: 30%;
+        height: 60%;
         overflow: hidden;
-        -webkit-animation: FadeIn 3s ease-out;
-        animation: FadeIn 1s ease-out;
+        -webkit-animation: FadeIn 1s ease-out;
+        animation: FadeIn 3s ease-out;
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
@@ -232,7 +248,7 @@
         position: absolute;
         width: 100%;
         background-repeat: no-repeat;
-        background-size: auto 80%;
+        background-size: auto 100%;
         height: 70px;
         -webkit-animation-duration: 120s;
         animation-duration: 120s;
@@ -244,13 +260,13 @@
         animation-timing-function: linear;
         -webkit-animation-name: Float, FadeFloat;
         animation-name: Float, FadeFloat;
-        z-index: -1
+        z-index: 1
     }
 
     .Cloud.Foreground {
         height: 10%;
         min-height: 20px;
-        z-index: -3
+        z-index: 3
     }
 
     .Cloud.Background {
@@ -501,5 +517,7 @@
     <div class="Cloud Background"></div>
     <div class="Cloud Background"></div>
 </div>
+
+
 </body>
 </html>

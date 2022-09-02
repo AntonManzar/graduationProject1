@@ -23,6 +23,9 @@ public class PersonService {
         return personRepository.findAll();
     }
 
-
+    @Transactional
+    public void register(Person person) {
+        personRepository.save(person);
+    }
 
 }
