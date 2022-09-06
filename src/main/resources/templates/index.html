@@ -15,14 +15,14 @@
         <div class="a1"><a class="a1" href="/">Главная</a></div>
         <div class="a2"><a class="a2" href="/product">Игрушки</a></div>
         <div class="a3"><a class="a3" href="/">Колонка №3</a></div>
-        <div class="a4"><a class="a4" href="/">Колонка №4</a></div>
+        <div class="a4"><a class="a4" href="/product/test">Test</a></div>
         <div class="a5"><a class="a5" href="/">Колонка №5</a></div>
         <div class="a6"><a class="a6" href="/">Колонка №6</a></div>
-        <div class="a7"><a class="a7" href="/">Колонка №7</a></div>
+        <div class="a7"><a class="a7" href="/person/showUserInfo">Колонка №7</a></div>
     </h2>
 </nav>
 <main class="margin">
-
+    <img class="foto" src="../static/DSCF6015.JPG"/>
 </main>
 <aside class="margin">
     aside
@@ -113,7 +113,7 @@
         width: 60%;
         min-height: 500px;
         float: right;
-        background-color: rgba(0, 255, 0, 0.2);
+        background-color: rgba(0, 255, 0, 0.01);
     }
 
     caption {
@@ -157,6 +157,13 @@
     .margin {
         margin: 2%;
     }
+
+    .foto {
+        width: 90%;
+        height: 90%;
+        border-radius: 10%;
+        border: 2px inset #08d608;
+    }
 </style>
 
 <!--================================================================================================-->
@@ -180,11 +187,13 @@
         color: #ffffff;
         background-color: aqua;
         background-image: radial-gradient(circle, #96e8e6 0%, #20ebf3 70%, #0e95d6 100%)
+        background-repeat: no-repeat;
     }
 
     #Clouds {
         position: static;
         top: 0;
+        background-repeat: no-repeat;
         right: 0;
         bottom: 0;
         left: 0;

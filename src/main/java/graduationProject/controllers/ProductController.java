@@ -24,4 +24,9 @@ public class ProductController {
 
         return "product/showListProduct";
     }
+
+    @GetMapping("/test")
+    public String test(){
+        return "/test";
+    }
 }
