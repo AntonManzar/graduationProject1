@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать данные посетителя:</title>
+</head>
+<body style="text-align: center">
+<hr/>
+<h1>Редактировать данные посетителя:</h1>
+<hr/>
+<h2>
+    <br>
+    <form th:method="patch" th:action="@{/person/{personId}(personId=${person.getPersonId()})}" th:object="${person}">
+        <label for="name">Измените имя: </label>
+        <input type="text" th:field="*{personName}" id="name"/>
+        <div style="color: #f54343" th:if="${#fields.hasErrors('personName')}" th:errors="*{personName}">error</div>
+        <br/>
+        <label for="personAge">Измените год рождения: </label>
+        <input type="text" th:field="*{personAge}" id="personAge"/>
+        <div style="color: #f54343" th:if="${#fields.hasErrors('personAge')}" th:errors="*{personAge}">error</div>
+        <br/>
+        <label for="personEmail">Измените email: </label>
+        <input type="text" th:field="*{personEmail}" id="personEmail"/>
+        <div style="color: #f54343" th:if="${#fields.hasErrors('personEmail')}" th:errors="*{personEmail}">error</div>
+        <br/>
+        <label for="password">Измените пароль: </label>
+        <input type="password" th:field="*{password}" id="password"/>
+        <div style="color: #f54343" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">error</div>
+        <br/>
+        <input type="submit" value="Обновить данные посетителя!"/>
+    </form>
+    <br>
+
+</h2>
+<br>
+<hr/>
+<a href="/">Вернуться на главную!</a>
+</body>
+</html>

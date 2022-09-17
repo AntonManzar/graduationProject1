@@ -1,6 +1,10 @@
 package graduationProject.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
 
@@ -13,18 +17,23 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int personId;
 
+    @NotEmpty(message = "Поле для имени не может быть пустым")
     @Column(name = "person_name")
     private String personName;
 
+    @Min(value = 16, message = "Возраст не может быть меньше 16 лет!")
     @Column(name = "person_age")
     private int personAge;
 
+    @Email(message = "email имеет не валидную форму! (___@___.___)")
+    @NotEmpty(message = "Поле для email не может быть пустым")
     @Column(name = "person_email")
     private String personEmail;
 
     @Column(name = "person_role")
     private String personRole;
 
+    @NotNull
     @Column(name = "password")
     private String password;
 

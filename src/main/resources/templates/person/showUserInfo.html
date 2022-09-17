@@ -28,6 +28,16 @@
     <p th:text="${user.getPersonId()}"></p>
     <p th:text="${user.getPersonRole()}"></p>
     <p th:text="${user.getTimeRegistrationPerson()}"></p>
+    <br>
+    <a th:href="@{/person/{personId}/editPerson(personId=${user.getPersonId()})}">Редактировать данные пользователя!</a>
+    <br>
+    <form th:method="DELETE" th:action="@{/person/{personId}(personId=${user.getPersonId()})}">
+        <input style="color: red" type="submit" value="Удалить пользователя!"/>
+    </form>
+
+
+        <a href="/auth/login">Выйти из профиля!</a>
+
 
 </main>
 <aside class="margin">
@@ -180,7 +190,7 @@
     body {
         min-height: 100%;
         color: #ffffff;
-        background-color: #ae3cfc;
+        background-color: #3fd6cb;
         background-image: radial-gradient(circle, #96e8e6 0%, #20ebf3 70%, #0e95d6 100%)
         background-repeat: no-repeat;
     }

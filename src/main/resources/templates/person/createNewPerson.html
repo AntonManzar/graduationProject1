@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить нового посетителя:</title>
+</head>
+<body style="text-align: center">
+<hr/>
+<h1>Добавить нового посетителя:</h1>
+<hr/>
+<h2>
+    <br>
+    <form th:method="POST" th:action="@{/person}" th:object="${person}">
+        <label for="personName">Введите имя: </label>
+        <input type="text" th:field="*{personName}" id="personName"/>
+        <div style="color: #f54343" th:if="${#fields.hasErrors('personName')}" th:errors="*{personName}">error</div>
+        <br/>
+        <label for="personAge">Введите год рождения: </label>
+        <input type="text" th:field="*{personAge}" id="personAge"/>
+        <div style="color: #f54343" th:if="${#fields.hasErrors('personAge')}" th:errors="*{personAge}">error</div>
+        <br/>
+        <label for="personEmail">Введите год рождения: </label>
+        <input type="text" th:field="*{personEmail}" id="personEmail"/>
+        <div style="color: #f54343" th:if="${#fields.hasErrors('personEmail')}" th:errors="*{personEmail}">error</div>
+        <br/>
+        <label for="password">Введите год рождения: </label>
+        <input type="password" th:field="*{password}" id="password"/>
+        <div style="color: #f54343" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">error</div>
+        <br/>
+        <input type="submit" value="Добавить посетителя!"/>
+    </form>
+    <br>
+</h2>
+<br>
+<hr/>
+<a href="/">Вернуться на главную!</a>
+</body>

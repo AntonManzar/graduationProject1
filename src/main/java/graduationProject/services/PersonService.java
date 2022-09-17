@@ -3,6 +3,7 @@ package graduationProject.services;
 import graduationProject.models.Person;
 import graduationProject.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +24,7 @@ public class PersonService {
         this.passwordEncoder = passwordEncoder;
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public List<Person> showListPerson() {
         return personRepository.findAll();
     }
@@ -39,4 +41,19 @@ public class PersonService {
         personRepository.save(person);
     }
 
+    @Transactional
+    public void editPerson(int personId, Person person) {
+        person.setPersonId(personId);
+        personRepository.save(person);
+    }
+
+    @Transactional
+    public void deletePerson(int personId) {
+        personRepository.deleteById(personId);
+    }
+
+    @Transactional
+    public void createNewPerson(Person person) {
+        personRepository.save(person);
+    }
 }

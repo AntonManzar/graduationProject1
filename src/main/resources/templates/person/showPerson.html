@@ -21,21 +21,19 @@
     </h2>
 </nav>
 <main class="margin">
-    <table>
-        <caption>Пользователи:</caption>
-        <thead>
-        <tr>
-            <th>Имя</th>
-            <th>Email</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="person : ${listPerson}">
-            <th th:text="${person.getPersonName()}"></th>
-            <th th:text="${person.getPersonEmail()}"></th>
-        </tr>
-        </tbody>
-    </table>
+    <h2>
+        <br>
+        <p th:text="'ID-идентификатор: ' + ${person.getPersonId()}">value</p>
+        <br>
+        <p th:text="${person.getPersonName() + ', ' + person.getPersonAge()}+' года рождения'">value</p>
+        <br>
+
+        <a th:href="@{/person/{personId}/editPerson(personId=${person.getPersonId()})}">Редактировать данные пользователя!</a>
+        <br>
+        <form th:method="DELETE" th:action="@{/person/{personId}(personId=${person.getPersonId()})}">
+            <input style="color: red" type="submit" value="Удалить пользователя!"/>
+        </form>
+
 </main>
 <aside class="margin">
     aside

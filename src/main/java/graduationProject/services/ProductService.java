@@ -22,4 +22,24 @@ public class ProductService {
     public List<Product> showListProduct() {
         return productRepository.findAll();
     }
+
+    public Product showProduct(int productId) {
+        return productRepository.findById(productId).orElse(null);
+    }
+
+    @Transactional
+    public void createNewProduct(Product product) {
+        productRepository.save(product);
+    }
+
+    @Transactional
+    public void editProduct(int productId, Product product) {
+        product.setProductId(productId);
+        productRepository.save(product);
+    }
+
+    @Transactional
+    public void deleteProduct(int productId) {
+        productRepository.deleteById(productId);
+    }
 }

@@ -29,19 +29,45 @@
             <th>Наименование</th>
             <th>Цена [руб/шт]</th>
             <th>Колличество [шт]</th>
+            <th>Добавить в корзину</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="product : ${listProduct}">
-            <th th:text="${product.getProductName()}"></th>
+            <th>
+                <a th:href="@{/product/{productId}(productId=${product.getProductId()})}"
+                   th:text="${product.getProductName()}"></a>
+            </th>
             <th th:text="${product.getProductPrice()}"></th>
             <th th:text="${product.getProductAmount()}"></th>
+            <th>
+                <form th:method="post" th:action="@{/basket}" th:object="${addBasket}">
+                    <input type="text" th:field="${addBasket.basketAmount}" id="personAge"/>
+                    <input type="submit" value="Добавить количество" th:field="${addBasket.setProduct(product)}"/>
+                </form>
+            </th>
         </tr>
         </tbody>
     </table>
 </main>
 <aside class="margin">
-    aside
+    <table>
+        <caption>Корзина:</caption>
+        <thead>
+        <tr>
+            <th>Наименование</th>
+            <th>Цена [руб/шт]</th>
+            <th>Колличество [шт]</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="basket : ${basket}">
+            <th th:text="${basket.getProduct().getProductName()}"></th>
+            <th th:text="${basket.getProduct().getProductPrice()}"></th>
+            <th th:text="${basket.getBasketAmount()}"></th>
+        </tr>
+        </tbody>
+    </table>
 </aside>
 <footer class="margin">
     <a href="/person">список всех пользователей</a>
@@ -73,6 +99,7 @@
         text-align: center;
         margin: 0.5%;
     }
+
     nav h2 div a {
         text-align: center;
     }
